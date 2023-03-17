@@ -4,22 +4,24 @@ import Header from '../../Template/Header'
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 export default function  HistoriqueMessage (){
-  const [ users, setUsers ] = useState([]);
-  let routeParams = useParams();
- console.log(routeParams)
+  const [ message, setMessage ] = useState([]);
+  let id = useParams();
+ //console.log(id)
+
   useEffect(() => {
     const fetchData = async () => {
   
         const response = await fetch(
           //console.log(routeParams)
-         // 'https://golden-indigo.herokuapp.com/api/user',{mode:'cors'});
+          'https://golden-indigo.herokuapp.com/api/message/allmessage/63185a20e921fc00230642e1',{mode:'cors'});
+          //`https://golden-indigo.herokuapp.com/api/user/${id}`,{mode:'cors'});
         
-          // const data = await response.json();
-          //console.log({data})
+          const data = await response.json();
+          console.log({data})
           //use only 3 sample data
-          //setUsers( data.slice( 0,13) )
+          setMessage( data.slice( 0,13) )
         
-        )
+        
        
     }
   
@@ -59,29 +61,31 @@ export default function  HistoriqueMessage (){
           </div>
         </div>
         <div className="card-body msg_card_body">
-          <div className="d-flex justify-content-start mb-4">
+          {message.map((msg,key)=>
+       
+          <div className="d-flex justify-content-start mb-4" key={key}>
             <div className="img_cont_msg">
               <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" className="rounded-circle user_img_msg" />
             </div>
             <div className="msg_cotainer">
-              Hi, how are you samim?
+            {msg.message.messages}
+         
               <span className="msg_time">8:40 AM, Today,jaweherncir</span>
             
             </div>
            
           </div>
-     
-     
+        
+               )}
+        </div>
+
       
      
-
-        </div>
     
       </div>
     </div>
   </div>
 </div>
-
 
 
 

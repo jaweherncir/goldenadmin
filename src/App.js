@@ -17,6 +17,7 @@ import ReclamationMember from './Component/pages/Reclamation/ReclamationMember';
 import ReclamationEvent from './Component/pages/Reclamation/ReclamationEvent';
 import ReclamatinCertif from './Component/pages/Reclamation/ReclamatinCertif';
 import Conversation from './Component/pages/Reclamation/Conversation';
+
 import {
   BrowserRouter as Router,
 
@@ -52,6 +53,7 @@ function App() {
             
             <Route path="/HistoriqueMessage/:id" element={<HistoriqueMessage/>}></Route>
             <Route path="/GoldenHours" element={<GoldenHours/>}></Route>
+         
         </Routes>
 
 </Router>

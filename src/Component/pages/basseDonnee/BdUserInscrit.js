@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 export default function BdUserInscrit (){
   const [ users, setUsers ] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
   
@@ -15,11 +16,9 @@ export default function BdUserInscrit (){
            const data = await response.json();
           console.log({data})
           //use only 3 sample data
-          setUsers( data )
-       
-      
-       
+          setUsers( data )       
     }
+ 
   
     // Call the function
     fetchData();
@@ -81,7 +80,7 @@ export default function BdUserInscrit (){
                   </td>
                   <td>{user.numero}</td>
            
-                  <td key={key}>{user.villeconnue[0]} , {user.villeconnue[1]}</td>
+                  <td key={key}>{user.villeconnue[0]}  {user.villeconnue[1]}</td>
               
                   <td>
                 {user.createdAt}
