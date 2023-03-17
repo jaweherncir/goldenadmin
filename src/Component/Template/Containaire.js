@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 export default function Containaire() {
   const [ num, setNum ] = useState([]);
   const [ evenement, setEvent ] = useState([]);
+  const [ duo, setDuo ] = useState([]);
+  const [ post, setPost ] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
   
@@ -16,7 +18,7 @@ export default function Containaire() {
            setNum( data)
             }
        
-            const fetchEvent = async () => {
+    const fetchEvent = async () => {
   
               const evenet = await fetch(
               
@@ -27,10 +29,34 @@ export default function Containaire() {
                  //use only 3 sample data
                  setEvent( evnt)
                   }  
+    const fetchDuo= async () => {
+  
+                    const comptDuo = await fetch(
+                    
+                      'https://golden-indigo.herokuapp.com/api/event/alleventcount',{mode:'cors'});
+                    
+                       const duocompt = await comptDuo.json();
+                       console.log({duocompt})
+                       //use only 3 sample data
+                       setDuo( duocompt)
+                          }
+    const fetchPost= async () => {
+  
+                            const pulication = await fetch(
+                            
+                              'https://golden-indigo.herokuapp.com/api/event/alleventcount',{mode:'cors'});
+                            
+                               const posts = await pulication.json();
+                               console.log({posts})
+                               //use only 3 sample data
+                               setPost( posts)
+                                  }                      
   
     // Call the function
     fetchData();
     fetchEvent();
+    fetchDuo();
+    fetchPost();
  }, []);
 
     return (
@@ -117,7 +143,7 @@ export default function Containaire() {
         {/* small box */}
         <div className="small-box bg-warning">
           <div className="inner">
-            <h3>44</h3>
+            <h3>{duo.result} </h3>
             <p>Compte Duo</p>
           </div>
           <div className="icon">
@@ -131,7 +157,7 @@ export default function Containaire() {
         {/* small box */}
         <div className="small-box bg-danger">
           <div className="inner">
-            <h3>65</h3>
+            <h3>{post.result} </h3>
             <p>All publication </p>
           </div>
           <div className="icon">

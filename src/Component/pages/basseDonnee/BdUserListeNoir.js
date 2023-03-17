@@ -1,26 +1,40 @@
-import React, { Component } from 'react'
+
 import Menu from '../../Template/Menu'
 import Header from '../../Template/Header'
-export default class BdUserListeNoir extends Component {
-  render() {
+import React, { useEffect, useState } from "react";
+export default function BdUserListeNoir () {
+  const [ users, setUsers ] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+  
+        const response = await fetch(
+        
+          'https://golden-indigo.herokuapp.com/api/user/alluserblock',{mode:'cors'});
+        
+           const data = await response.json();
+          console.log({data})
+          //use only 3 sample data
+
+          setUsers( data.slice( 0,7) )
+          console.log(data.nom)
+       
+    }
+  
+    // Call the function
+    fetchData();
+ }, []);
+
     return (
 
       <center>
              <Header/>
         <Menu/>
-        <div style={{marginLeft:270,alignItems:'center'}}>
+        <div style={{marginLeft:270,alignItems:'center',marginTop:50}}>
         {/* TABLE: LATEST ORDERS */}
-        <div className="card">
+        <div >
         <div className="card-header border-transparent">
-          <h3 className="card-title">Latest Orders</h3>
-          <div className="card-tools">
-            <button type="button" className="btn btn-tool" data-card-widget="collapse">
-              <i className="fas fa-minus" />
-            </button>
-            <button type="button" className="btn btn-tool" data-card-widget="remove">
-              <i className="fas fa-times" />
-            </button>
-          </div>
+          <h3 className="card-title">Liste noir</h3>
+       
         </div>
         {/* /.card-header */}
         <div className="card-body p-0">
@@ -28,609 +42,48 @@ export default class BdUserListeNoir extends Component {
             <table className="table m-0">
               <thead>
                 <tr>
-                  <th>Pseudo </th>
+                
                   <th>Nom</th>
                   <th>Prénom</th>
-                  <th>Mail</th>
+                  <th>Email</th>
+                  <th>Genre</th>
                   <th>Numéro</th>
-                  <th>Ville</th>
-                  <th>Pays</th>
-                  <th> date d'inscrit</th>
-                  <th>Historique message</th>
-                  <th>Document CIN</th>
-                  <th>Statut de l’abonnement</th>
-                  <th>Photo certif</th>
-                  <th>E-wallet</th>
+                  <th>VilleConnue</th>
+                  
+                  <th>date Naissance</th>
+                 
+                
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                  <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>  <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                  <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>  <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
-                <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>  <tr>
-                  <td>Ncir</td>
-                  <td>jaweher</td>
-                  <td>Ncir</td>
-                  <td>
-                    jaweherncir@gmail.com
-                  </td>
-                  <td>+216 20113786</td>
-                  <td>Mahdia</td>
-                  <td>Tunisie</td>
-                  <td>
-                  05/02/2019
-                  </td>
-                  <td><span className="badge badge-success">message</span></td>
-                  <td> <a href=''>Show</a></td>
-                  <td>
-                  <span className="badge badge-success">Hor ligne</span>
-                  </td>
-                  <td> <a href=''>Show</a></td>
-                  <td> <a href=''>Show</a></td>
-                </tr>
+              { 
+         users.map( (user,key) =>
+         <tr key={key} id={user._id}>
+          
                 
-
+                  <td>{user.nom}</td>
+                  <td>{user.prenom}</td>
+                  <td>
+                   {user.email}
+                  </td>
+                  <td>{user.genre}</td>
+                  <td>{user.numero}</td>
+                  <td key={key}>{user.villeconnue[0]} {user.villeconnue[1]}</td>
+                  <td>{user.dateNass}</td>
+                 
+                 
+               
+                 
+                
+                 
+              
+                </tr>
+            
+            )
+          }
+             
+                
+         
      
               </tbody>
             </table>
@@ -638,10 +91,7 @@ export default class BdUserListeNoir extends Component {
           {/* /.table-responsive */}
         </div>
         {/* /.card-body */}
-        <div className="card-footer clearfix">
-
-          <a href="javascript:void(0)" className="btn btn-sm btn-secondary float-right">View All Orders</a>
-        </div>
+        
         {/* /.card-footer */}
       </div>
       {/* /.card */}
@@ -649,4 +99,4 @@ export default class BdUserListeNoir extends Component {
   </center>
     )
   }
-}
+

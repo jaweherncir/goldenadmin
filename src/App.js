@@ -24,6 +24,8 @@ import {
  
   Routes
 } from "react-router-dom";
+import HistoriqueMessage from './Component/pages/basseDonnee/HistoriqueMessage';
+import GoldenHours from './Component/pages/EventGolden/GoldenHours';
 function App() {
   return (
     <div class="wrapper">
@@ -47,8 +49,9 @@ function App() {
 
             <Route path="/ReclamatinCertif" element={<ReclamatinCertif/>}></Route>
             <Route path="/Conversation" element={<Conversation/>}></Route>
-        
-        
+            
+            <Route path="/HistoriqueMessage/:id" element={<HistoriqueMessage/>}></Route>
+            <Route path="/GoldenHours" element={<GoldenHours/>}></Route>
         </Routes>
 
 </Router>
